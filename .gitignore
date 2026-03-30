@@ -98,7 +98,6 @@ $RECYCLE.BIN/
 
 # Environment variables
 .env
-.env.*
 
 # Build folders
 backend/dist/

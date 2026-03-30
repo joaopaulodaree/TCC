@@ -1,0 +1,35 @@
+.layout-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-width: 0;
+  position: relative;
+}
+
+.open-sidebar-btn {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.open-sidebar-btn:hover {
+  background-color: var(--bg-element-hover);
+  color: var(--text-primary);
+}

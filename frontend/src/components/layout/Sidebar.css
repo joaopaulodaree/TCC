@@ -1,0 +1,136 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg-sidebar);
+  transition: width 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+  border-right: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.sidebar.open {
+  width: 260px;
+  padding: 12px;
+}
+
+.sidebar.closed {
+  width: 0px;
+  padding: 0;
+  border-right: none;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.new-chat-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: transparent;
+  flex: 1;
+  transition: background-color 0.2s;
+}
+
+.new-chat-btn:hover {
+  background-color: var(--bg-element-hover);
+}
+
+.new-chat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-element);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+}
+
+.new-chat-text {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.close-sidebar-btn {
+  display: flex;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  transition: background-color 0.2s;
+}
+
+.close-sidebar-btn:hover {
+  background-color: var(--bg-element-hover);
+  color: var(--text-primary);
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.history-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-placeholder);
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  text-align: left;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item:hover {
+  background-color: var(--bg-element-hover);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.footer-item:hover {
+  background-color: var(--bg-element-hover);
+}

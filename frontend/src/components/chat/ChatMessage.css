@@ -1,0 +1,100 @@
+.chat-message-row {
+  display: flex;
+  padding: 24px 20px;
+  width: 100%;
+}
+
+.chat-message-row.user {
+  justify-content: flex-end;
+}
+
+.chat-message-row.assistant {
+  justify-content: flex-start;
+}
+
+.chat-message-content {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.chat-message-row.user .chat-message-content {
+  justify-content: flex-end;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-color);
+}
+
+.assistant-avatar {
+  background-color: var(--accent-color);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  padding: 4px;
+}
+
+.message-bubble {
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.user-bubble {
+  background-color: var(--accent-color2);
+  padding: 12px 20px;
+  border-radius: 24px;
+  border-bottom-right-radius: 4px;
+  max-width: 80%;
+}
+
+.assistant-bubble {
+  flex: 1;
+  padding: 4px 0;
+}
+
+/* Markdown styling overrides */
+.markdown-body {
+  color: inherit;
+  font-family: inherit;
+}
+
+.markdown-body p {
+  margin-bottom: 16px;
+}
+
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body pre {
+  background-color: #0d0d0d;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.markdown-body code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  padding: 0;
+}
