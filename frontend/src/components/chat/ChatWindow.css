@@ -102,3 +102,44 @@
   color: var(--text-placeholder);
   text-align: center;
 }
+
+.typing-indicator-bubble {
+  padding: 12px 18px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text-secondary);
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% { 
+    transform: scale(0);
+    background-color: var(--text-secondary);
+  }
+  40% { 
+    transform: scale(1);
+    background-color: var(--text-primary);
+  }
+}

@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { Bot } from 'lucide-react';
 import { ChatMessage } from './ChatMessage.tsx';
 import { ChatInput } from './ChatInput.tsx';
 import './ChatWindow.css';
 
 export function ChatWindow() {
+  const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -15,6 +17,7 @@ export function ChatWindow() {
   const handleSendMessage = (message: string) => {
     const newUserMsg = { id: Date.now(), role: 'user', content: message };
     setMessages(prev => [...prev, newUserMsg]);
+    setIsTyping(true);
     
     setTimeout(() => {
       setMessages(prev => [...prev, {
@@ -22,14 +25,15 @@ export function ChatWindow() {
         role: 'assistant',
         content: `Você disse: "${message}".`
       }]);
-    }, 1000);
+      setIsTyping(false);
+    }, 2000);
   };
 
   return (
     <div className="chat-window">
       <header className="chat-header">
         <div className="model-selector">
-          <span className="model-name">TCC Model (TS/React)</span>
+          <span className="model-name">Modelo TCC (TS/React)</span>
         </div>
       </header>
       
@@ -43,6 +47,23 @@ export function ChatWindow() {
             {messages.map((msg) => (
               <ChatMessage key={msg.id} role={msg.role} content={msg.content} />
             ))}
+            
+            {isTyping && (
+              <div className="chat-message-row assistant">
+                <div className="chat-message-content">
+                  <div className="avatar assistant-avatar">
+                    <Bot />
+                  </div>
+                  <div className="message-bubble assistant-bubble typing-indicator-bubble">
+                    <div className="typing-dots">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
