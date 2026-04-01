@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { LoginPage } from './pages/LoginPage';
 import { ChatPage } from './pages/ChatPage';
 import { PrivateRoute } from './components/auth/PrivateRoute';
+import { ChatProvider } from './contexts/ChatContext';
 import './styles/App.css';
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
         path="/"
         element={
           <PrivateRoute>
-            <ChatPage />
+            <ChatProvider>
+              <ChatPage />
+            </ChatProvider>
           </PrivateRoute>
         }
       />

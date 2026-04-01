@@ -1,5 +1,6 @@
-import { MessageSquare, Plus, PanelLeftClose, PanelLeftOpen, LogOut, Settings, User } from 'lucide-react';
+import { MessageSquare, Plus, PanelLeftClose, PanelLeftOpen, LogOut, Settings, User, Trash2 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useChat } from '../../contexts/ChatContext';
 import './Sidebar.css';
 
 interface SidebarProps {
@@ -9,11 +10,12 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
   const { user, logout } = useAuth();
+  const { chats, currentChatId, selectChat, removeChat } = useChat();
   
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-header">
-        <button className="new-chat-btn">
+        <button className="new-chat-btn" onClick={() => selectChat(null)}>
           <div className="new-chat-icon">
             <Plus size={16} />
           </div>
@@ -25,18 +27,38 @@ export function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
       </div>
       
       <div className="sidebar-content">
-        {/* Placeholder for history items */}
-        <div className="history-group">
-          <p className="history-title">Hoje</p>
-          <button className="history-item">
-            <MessageSquare size={16} />
-            <span className="history-text">TCC Project Setup</span>
-          </button>
-          <button className="history-item">
-            <MessageSquare size={16} />
-            <span className="history-text">React Configuration</span>
-          </button>
-        </div>
+        {chats.length > 0 && (
+          <div className="history-group">
+            <p className="history-title">Seus Chats</p>
+            {chats.map(chat => (
+              <div
+                key={chat.id}
+                className={`history-item-wrapper ${currentChatId === chat.id ? 'active' : ''}`}
+              >
+                <button
+                  type="button"
+                  className="history-item"
+                  onClick={() => selectChat(chat.id)}
+                >
+                  <MessageSquare size={16} style={{ flexShrink: 0, pointerEvents: 'none' }} />
+                  <span className="history-text">{chat.title}</span>
+                </button>
+                <button
+                  type="button"
+                  className="delete-chat-btn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    removeChat(chat.id);
+                  }}
+                  title="Excluir chat"
+                >
+                  <Trash2 size={14} style={{ pointerEvents: 'none' }} />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="sidebar-footer">

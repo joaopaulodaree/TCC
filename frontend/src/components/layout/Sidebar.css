@@ -93,23 +93,64 @@
   margin: 0;
 }
 
+.history-item-wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  overflow: hidden;
+}
+
+.history-item-wrapper:hover {
+  background-color: var(--bg-element-hover);
+}
+
+.history-item-wrapper.active {
+  background-color: rgba(0, 179, 104, 0.15);
+  border-left: 2px solid var(--accent-color);
+}
+
 .history-item {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
-  border-radius: 8px;
   color: var(--text-primary);
   font-size: 14px;
   text-align: left;
-  transition: background-color 0.2s;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.history-item:hover {
-  background-color: var(--bg-element-hover);
+.delete-chat-btn {
+  padding: 8px;
+  margin-right: 4px;
+  color: var(--text-placeholder);
+  border-radius: 6px;
+  opacity: 0;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, color 0.2s, background-color 0.2s;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+.history-item-wrapper:hover .delete-chat-btn {
+  opacity: 1;
+}
+
+.delete-chat-btn:hover {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
 }
 
 .sidebar-footer {
